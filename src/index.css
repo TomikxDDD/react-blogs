@@ -3,6 +3,8 @@
 /* Variables */
 :root {
   --clr-theme: #4343fa;
+  --clr-theme-dark: #0000ff;
+  --clr-theme-light: #bcbcfd;
 }
 
 /* base styles */
@@ -10,6 +12,11 @@
   margin: 0;
   font-family: "Quicksand";
   color: #333;
+}
+
+.container{
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .btn {
@@ -24,7 +31,11 @@
   opacity: 0.9;
 }
 
-.navbar {
+.text-blue{
+  color: var(--clr-theme);
+}
+
+.navbar{
   padding: 20px;
   display: flex;
   align-items: center;
@@ -32,6 +43,7 @@
   margin: 0 auto;
   border-bottom: 1px solid #f2f2f2;
 }
+
 .navbar h1 {
   color: var(--clr-theme);
 }
@@ -40,7 +52,7 @@
   font-weight: 600;
 }
 .navbar a {
-  margin-left: 16px;
+  margin-left: 1em;
   text-decoration: none;
   padding: 6px;
 }
@@ -48,14 +60,41 @@
   color: var(--clr-theme);
 }
 .content {
-  max-width: 600px;
-  margin: 40px auto;
+
+  margin: 3em auto;
   padding: 20px;
 }
 
+/* Filter */
+.filter{
+  margin: 1em 0;
+}
+
+.filter-visible-btn{
+  margin-left: 0.75em;
+  padding: 0.25em 0.5em;
+  font-weight: 700;
+  background-color: #fafafa;
+}
+
+.filter-visible-btn:hover{
+  background-color: var(--clr-theme-light);
+}
+
+.filter-form input {
+  margin-left: 2em;
+}
+
+.filter-btn{
+  background-color: var(--clr-theme);
+  color: white;
+  margin-left: 2em;
+}
+
+
 /* blog previews / list */
 .blog-preview {
-  padding: 10px 16px;
+  padding: 0.5em 1em;
   margin: 20px 0;
   border-bottom: 1px solid #fafafa;
   cursor: pointer;
@@ -64,10 +103,17 @@
   box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.1);
 }
 .blog-preview h3 {
-  font-size: 20px;
+  font-size: 1.5rem;
   color: var(--clr-theme);
   margin-bottom: 8px;
 }
+
+.blog-preview h3 .blog-new-batch {
+  /* display: block; */
+  margin-left: 0.5em;
+  color: var(--clr-theme-dark);
+}
+
 
 .blog-preview a {
   text-decoration: none;
@@ -81,8 +127,8 @@
   margin-bottom: 0.5em;
 }
 
-.blog-author {
-  margin: 0.5em, 0;
+.blog-author, .blog-date {
+  margin: 0.75em 0;
   font-style: italic;
 }
 
@@ -142,4 +188,22 @@
 .not-found a {
   text-decoration: none;
   color: var(--clr-theme);
+}
+
+/* Footer */
+
+.footer{
+  border-top: 1px solid #f2f2f2;
+  padding: 2em;
+  /* text-align: center; */
+}
+
+.footer a {
+  color: var(--clr-theme);
+}
+
+.footer .footer-list{
+  /* list-style-type: none; */
+  margin-top: 0.75em;
+  text-align: left;
 }

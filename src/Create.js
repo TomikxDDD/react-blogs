@@ -1,19 +1,36 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom"
 
 const Create = () => {
   
   const [blogTitle, setBlogTitle] = useState('')
-  const [blogBody, setBlogBody] = useState(null)
-  const [blogAuthor, setBlogAuthor] = useState(null)
+  const [blogBody, setBlogBody] = useState('')
+  const [blogAuthor, setBlogAuthor] = useState('')
+  const [blogDate, setBlogDate] = useState({})
 
   const [addingBlog, setAddingBlog] = useState(false)
 
   const history = useHistory();
 
+  // Save the current date
+  useEffect(() => {
+    const currDate = new Date()
+
+    const currDay = currDate.getDate() < 10 ? `0${currDate.getDate()}` : `${currDate.getDate()}`
+    const currMonth = currDate.getMonth() + 1 < 10 ? `0${currDate.getMonth() + 1}` : `${currDate.getMonth() + 1}`
+    
+    setBlogDate({
+      day: currDay,
+      month: currMonth,
+      year: currDate.getFullYear()
+    })
+
+  }, [addingBlog])
+  
   const handleSubmit = (e) => {
     e.preventDefault();
-    const newBlog = {title: blogTitle, author: blogAuthor,  body: blogBody}
+
+    const newBlog = {title: blogTitle, author: blogAuthor,  body: blogBody, date: blogDate}
 
     setAddingBlog(true)
     
@@ -26,10 +43,11 @@ const Create = () => {
       setAddingBlog(false)
       setBlogTitle('')
       setBlogBody('')
-      setBlogAuthor('Tomas')
+      setBlogAuthor('')
+      setBlogDate({})
 
       history.push("/");
-    }), 2500)
+    }), 500)
   }
 
   return (
@@ -54,9 +72,10 @@ const Create = () => {
         <select
           value={blogAuthor}
           onChange={(e) => setBlogAuthor(e.target.value)}>
-          <option value="Tomas">Tomas</option> 
-          <option value="Jakub">Jakub</option> 
           <option value="Alice">Alice</option> 
+          <option value="Bob">Bob</option> 
+          <option value="Chris">Chris</option> 
+          <option value="David">David</option> 
         </select>
         {addingBlog ? <button className="btn create-btn" type="button" disabled>Saving the blog</button> : <button className="btn create-btn" type="submit">Add blog</button> }
       </form>

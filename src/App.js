@@ -5,13 +5,14 @@ import BlogDetails from "./BlogDetails";
 import NotFound from "./NotFound";
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Footer from "./Footer";
 
 function App(props) {
   return (
     <Router>
       <div className="App">
         <NavBar />
-        <div className="content">
+        <div className="container content">
           <Switch>
             <Route exact path="/">
               <Home />
@@ -27,6 +28,7 @@ function App(props) {
             </Route>
           </Switch>
         </div>
+        <Footer />
       </div>
     </Router>
   );

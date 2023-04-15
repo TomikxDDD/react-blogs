@@ -6,10 +6,10 @@ const useFetch = (url) => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const abortCont = new AbortController();
+    const abortController = new AbortController();
 
     setTimeout(() => {
-      fetch(url, { signal: abortCont.signal }) // Associating the abort controller with the fetch request
+      fetch(url, { signal: abortController.signal }) // Associating the abort controller with the fetch request
         .then((res) => {
           if (!res.ok) {
             throw Error(`There is an error during fetching... ${res.status}: ${res.statusText}`);
@@ -29,11 +29,11 @@ const useFetch = (url) => {
             setError(err.message);
           }
         });
-    }, 1000);
+    }, 250);
 
-    return () => abortCont.abort(); // Cleanup function -> Triggering abort of the fetch request
+    return () => abortController.abort(); // Cleanup function -> Triggering abort of the fetch request
   }, [url]);
-  return { data, isLoading, error };
+  return { data, setData, isLoading, error };
 };
 
 export default useFetch;
