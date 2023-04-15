@@ -19,9 +19,7 @@ const BlogList = ({ blogs, title }) => {
     const isNew = (currentDate.getDate() === parseInt(blog.date.day)) && 
                   (currentDate.getMonth() + 1 === parseInt(blog.date.month)) &&
                   (currentDate.getFullYear() === parseInt(blog.date.year));
-
-    console.log(isNew, "Current day: ", currentDate.getDate(), currentDate.getMonth(), currentDate.getFullYear(), '; blog Date:', blog.date)
-
+                  
     return (
       <div className="blog-preview" key={blog.id}>
         <Link to={`/blogs/${blog.id}`}>

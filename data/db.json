@@ -32,6 +32,17 @@
         "year": 2023
       },
       "id": 3
+    },
+    {
+      "title": "Test",
+      "author": "David",
+      "body": "Testing",
+      "date": {
+        "day": "15",
+        "month": "04",
+        "year": 2023
+      },
+      "id": 4
     }
   ]
 }
